@@ -1,15 +1,19 @@
 import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXCst_Cav4ouLjI6qePFruXJyz7rmzd1k",
-  authDomain: "upload-img-file.firebaseapp.com",
-  projectId: "upload-img-file",
-  storageBucket: "upload-img-file.appspot.com",
-  messagingSenderId: "937740096139",
-  appId: "1:937740096139:web:6fb4a2ea4a45ae02e6ba8e",
+  apiKey: "AIzaSyBho76G7nawU5dqxIyF7xOwAFim9tsAhIo",
+  authDomain: "blogapp-ba5e5.firebaseapp.com",
+  projectId: "blogapp-ba5e5",
+  storageBucket: "blogapp-ba5e5.appspot.com",
+  messagingSenderId: "557671180905",
+  appId: "1:557671180905:web:ea34375e150745783090f8",
+  measurementId: "G-Q9GRVJVT8B",
 };
 
 const app = initializeApp(firebaseConfig);
 
-export const storage = getStorage(app);
+export const db = getFirestore(app);
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
