@@ -1,9 +1,25 @@
 import React from "react";
-import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase-config";
+
+import { getIdTokenResult, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const signInWithGoogle = () => {};
+const Login = ({ setIsAuth }) => {
+  const navigate = useNavigate();
+
+  // google signIn
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        localStorage.setItem("isAuth", "true");
+
+        navigate("/");
+        setIsAuth(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
